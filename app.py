@@ -2,20 +2,20 @@ import streamlit as st
 from dotenv import load_dotenv
 import os
 from langchain.chains import RetrievalQA
-from langchain.vectorstores import Pinecone as LangchainPinecone
+from langchain_pinecone import Pinecone as LangchainPinecone
 from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 # Load environment variables
 load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 
-# Initialize Pinecone
 from pinecone import Pinecone
 pc = Pinecone(api_key=PINECONE_API_KEY)
 index = pc.Index("helpgita")
+
 
 # Load embeddings
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
