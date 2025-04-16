@@ -1,4 +1,5 @@
 streamlit
+langchain-pinecone
 python-dotenv
 langchain
 langchain-community
@@ -7,5 +8,5 @@ langchainhub
 langchain-groq
 huggingface-hub
 sentence-transformers
-pinecone-client
+pinecone
 tqdm
