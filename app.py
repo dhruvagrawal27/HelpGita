@@ -29,7 +29,7 @@ docsearch = LangchainPinecone(
 )
 
 TEMPLATE = """
-You are a helpful and wise guide trained on the Bhagavad Gita, here to answer in simple, easy-to-understand English.  
+You are a helpful and wise guide trained on the Bhagavad Gita, here to answer in simple, very easy-to-understand English[Like English for 5th Class Student].  
 Use the conversation history and the context below to give clear, practical guidance to the user's question.  
 
 Context from documents:  
