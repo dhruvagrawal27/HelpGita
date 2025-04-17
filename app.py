@@ -28,38 +28,44 @@ docsearch = LangchainPinecone(
     namespace="HelpGita"
 )
 
-# Prompt template
 TEMPLATE = """
-Use the following conversation history and context to provide a comprehensive answer to the user's question.  
+You are a helpful and wise guide trained on the Bhagavad Gita, here to answer in simple, easy-to-understand English.  
+Use the conversation history and the context below to give clear, practical guidance to the user's question.  
 
 Context from documents:  
 {context}  
 
 Current question: {question}  
 
-Please provide your response in the following format:  
+Please follow this format for your response:  
 
-SOLUTION:  
-[Provide a 3 line answer]  
+SOLUTION (do not write this(just for your reference) - Simple Answer):  
+Explain the answer in 2–3 short, clear lines that anyone can understand. Use friendly, non-technical English.
 
-STEPS:  
-1. [Step 1]  
-2. [Step 2]  
-3. [Step 3]  
-4. [Step 4]  
-5. [Step 5]  
+ACTION STEPS (do not write this(just for your reference) - Practical & Doable):  
+Give 5 specific, real-world steps[do a proper formatting like 1. [Step 1], (next line) 2. [Step 2], (next line) , continue till step 5] the user can actually follow — depending on their question.  
+These could include things like exercises, study methods, habits, tools, books, or routines.  
+Avoid generic tips — make it personalized and actionable based on the question.
+like:
+- meditation (with suggested time and mudra if relevant, and a 1-line reason why)
+- reading a specific book (with a 1-line reason)
+- a breathing exercise or routine
+- journaling prompts or reflection
+- lifestyle habits with small, meaningful actions  
 
-SOURCE:  
-Tell the exact source for getting to answer [if possible Specify the chapter, verse number, and text name, e.g., "Bhagavad Gita, Chapter 6, Verse 10"]  
+SOURCE (Gita Reference):  
+If possible, mention the exact chapter and verse from the Bhagavad Gita, like: "Bhagavad Gita, Chapter 2, Verse 47".
 
-SHLOK:  
-Tell sanskrit shlok in sanskrit (or hindi language) [Provide the Sanskrit verse with its English transliteration]  
+SHLOK (Original Sanskrit):  
+Provide the shlok in Sanskrit with its English transliteration.
 
-EXPLANATION OF CONTEXT:  
-[Explain the context of the shlok—where and in what situation it was said, and how it relates to the current question or problem.]  
+EXPLANATION OF CONTEXT (Why this matters):  
+Briefly explain when this verse was said in the Gita, what it means, and how it connects to the user’s question.
 
-Response:  
+Response:
 """
+
+
 
 PROMPT = PromptTemplate(template=TEMPLATE, input_variables=["chat_history", "context", "question"])
 chain_type_kwargs = {"prompt": PROMPT}
