@@ -9,8 +9,8 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 
 # Load environment variables
 load_dotenv()
-PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
-GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 
 from pinecone import Pinecone
 pc = Pinecone(api_key=PINECONE_API_KEY)
