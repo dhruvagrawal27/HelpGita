@@ -5,7 +5,7 @@ import time
 st.set_page_config(
     page_title="KrishnaGuides - Spiritual Wisdom",
     page_icon="🕉️",
-    layout="centered",
+    layout="wide",  # Changed back to centered layout
     initial_sidebar_state="collapsed"
 )
 
@@ -16,6 +16,7 @@ st.markdown("""
         font-family: 'Serif';
         text-align: center;
         color: #5E35B1;
+        margin-bottom: 10px;
     }
     .subheader {
         text-align: center;
@@ -65,6 +66,13 @@ st.markdown("""
         padding: 15px;
         border-radius: 5px;
         margin: 20px 0;
+        color: #333; /* Dark text color for better visibility in both modes */
+    }
+    /* Dark mode support for testimonials */
+    [data-theme="dark"] .testimonial {
+        background-color: #333;
+        color: #f0f0f0;
+        border: 1px solid #555;
     }
     .faq-question {
         font-weight: bold;
@@ -86,17 +94,32 @@ st.markdown("""
         background-color: #EDE7F6;
         border-left: 5px solid #7E57C2;
     }
+    /* Add glow effect to headers */
+    .glow-text {
+        text-shadow: 0 0 10px rgba(94, 53, 177, 0.3);
+    }
+    .stToggle {
+        margin-bottom: 0 !important; /* Remove space after toggle */
+    }
+    /* Container to limit width for content */
+    .content-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# Header Section
-col1, col2, col3 = st.columns([1, 2, 1])
+# Header Section with more creative headlines
+col1, col2, col3 = st.columns([1, 6, 1])
 with col2:
-    st.markdown('<h1 class="main-header">KrishnaGuides</h1>', unsafe_allow_html=True)
-    st.markdown('<h3 class="subheader">Ancient Wisdom for Modern Questions</h3>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-header glow-text">Now You Can Chat with Lord Krishna—And Get Real Answers from the Gita.</h1>', unsafe_allow_html=True)
+    st.markdown('<h2 class="main-header">The Ancient Wisdom of the Bhagavad Gita, Delivered to Your Screen.</h2>', unsafe_allow_html=True)
+    st.markdown('<h3 class="subheader">Ask Questions. Get Answers from the Bhagavad Gita—as if Krishna Were Speaking to You.</h3>', unsafe_allow_html=True)
 
-# Hero Image
-st.image("image.jpeg", use_container_width=True)
+# Hero Image - kept in a container to prevent stretching
+col1, col2, col3 = st.columns([1, 4, 1])
+with col2:
+    st.image("image.jpeg", use_container_width=True)
 
 # Toggle for monthly/yearly
 col1, col2, col3 = st.columns([1, 3, 1])
@@ -122,6 +145,7 @@ with col2:
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Sample Questions
+st.markdown('<div class="content-container">', unsafe_allow_html=True)
 st.markdown("## Ask Your Spiritual Question")
 
 # Initialize session state
@@ -175,22 +199,26 @@ with col2:
         
     if st.button("Dealing with stress through spirituality"):
         handle_sample_question("Dealing with stress through spirituality")
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Testimonials
 st.markdown('<div class="lotus-divider"></div>', unsafe_allow_html=True)
 st.markdown("## What Our Members Say")
 
+st.markdown('<div class="content-container">', unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
     st.markdown('<div class="testimonial">"KrishnaGuides has transformed my approach to daily challenges. The spiritual wisdom from the Gita has given me a new perspective on lifes difficulties." <br>- Priya M.</div>', unsafe_allow_html=True)
 
 with col2:
     st.markdown('<div class="testimonial">"I turn to this service whenever I feel overwhelmed. The timeless wisdom helps me center myself and find clarity." <br>- Michael K.</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
 # FAQ Section
 st.markdown('<div class="lotus-divider"></div>', unsafe_allow_html=True)
 st.markdown("## Frequently Asked Questions")
 
+st.markdown('<div class="content-container">', unsafe_allow_html=True)
 faq_items = {
     "What is KrishnaGuides?": "KrishnaGuides is a spiritual Q&A service providing wisdom and guidance based on the teachings of the Bhagavad Gita. It helps you navigate modern challenges using ancient spiritual principles.",
     
@@ -204,3 +232,4 @@ faq_items = {
 for question, answer in faq_items.items():
     with st.expander(question):
         st.write(answer)
+st.markdown('</div>', unsafe_allow_html=True)
